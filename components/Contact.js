@@ -1,6 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+
+// Assembled at runtime (not present in the server-rendered/exported HTML)
+// to keep the address off plaintext scrapers.
+const EMAIL_USER = 'muatasimqazi'
+const EMAIL_DOMAIN = 'gmail.com'
 
 const Contact = () => {
+  const [email, setEmail] = useState('')
+
+  useEffect(() => {
+    setEmail(`${EMAIL_USER}@${EMAIL_DOMAIN}`)
+  }, [])
+
   return (
     <section id='contact'>
       <div className='container'>
@@ -8,7 +19,7 @@ const Contact = () => {
           <h3>Contact</h3>
           <div className='card-body'>
             <div className='row'>
-              <div className='col-lg-4 col-sm-12'>
+              <div className='col-lg-6 col-sm-12'>
                 <div className='row'>
                   <div className='col-1 align-self-center'>
                     <i className='h4 fas fa-map-marker' />
@@ -19,7 +30,7 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              <div className='col-lg-4 col-sm-12'>
+              <div className='col-lg-6 col-sm-12'>
                 <div className='row'>
                   <div className='col-1 align-self-center'>
                     <i className='h4 fas fa-envelope' />
@@ -27,25 +38,11 @@ const Contact = () => {
                   <div className='col-11 pl-4 font-weight-light text-left'>
                     <p className='h6 mb-0'>Email</p>
                     <p>
-                      <a href='mailto:muatasimqazi@gmail.com'>
-                        muatasimqazi@gmail.com
-                      </a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className='col-lg-4 col-sm-12'>
-                <div className='row'>
-                  <div className='col-1 align-self-center'>
-                    <i
-                      className='h4 fas fa-phone'
-                      data-fa-transform='rotate-90'
-                    />
-                  </div>
-                  <div className='col-11 pl-4 font-weight-light text-left'>
-                    <p className='h6 mb-0'>Phone</p>
-                    <p>
-                      <a href='tel:+12069793862'>206-979-3862</a>
+                      {email ? (
+                        <a href={`mailto:${email}`}>{email}</a>
+                      ) : (
+                        <span>&nbsp;</span>
+                      )}
                     </p>
                   </div>
                 </div>
