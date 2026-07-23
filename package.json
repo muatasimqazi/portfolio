@@ -3,32 +3,24 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "export": "next export",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider next dev",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider next build",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider next start",
+    "export": "NODE_OPTIONS=--openssl-legacy-provider next export",
     "test": "jest",
     "pretest": "standard"
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "jest-junit": "^8.0.0",
-    "next": "^9.0.5",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "next": "9.0.5",
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.14.0",
     "jest": "^24.9.0",
-    "jooks": "^1.0.0",
     "standard": "^13.1.0"
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "<rootDir>/test-setup.js"
-    ]
   },
   "standard": {
     "ignore": [
